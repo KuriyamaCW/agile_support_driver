@@ -2,31 +2,37 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>お願いドライブ礼法</title>
+  <title>お願いドライブ礼法〜運転者サポート〜</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <style>
-    body { font-family: Arial, "メイリオ", Meiryo, sans-serif; background: #f7f5fa; margin: 0; }
-    header { background: #49326b; color: #fff; padding: 1.2em 0; text-align: center; }
-    .container { max-width: 420px; margin: auto; background: #fff; border-radius: 12px; box-shadow: 0 3px 10px #ccc; padding: 2em; margin-top: 2em; }
+    body { font-family: "メイリオ", Meiryo, Arial, sans-serif; background: #f8f6fd; margin: 0; }
+    header { background: #533296; color: #fff; padding: 1.2em 0; text-align: center; }
+    .container { max-width: 480px; margin: auto; background: #fff; border-radius: 13px; box-shadow: 0 3px 13px #ddd; padding: 2em; margin-top: 2em; }
     h2 { margin-top: 0;}
-    label { display: block; margin-top: 1.3em; font-weight: bold;}
-    input, select { width: 100%; padding: .7em; border-radius: 8px; border: 1px solid #bcb7d6; margin-top: .4em;}
-    .btn { background: #7957d5; color: #fff; border:none; border-radius: 8px; padding: .8em; text-align:center; width:100%; font-size:1.1em; cursor:pointer; margin-top:1.7em; }
-    .btn:active { background: #49326b;}
-    .result {background: #f2edfa; margin-top: 2em; padding: 1em; border-radius:10px;}
-    .result strong { color: #7957d5;}
-    .gift {border: 1px solid #dac0ff; padding:.7em 1em; border-radius:7px; margin-top: 1em;}
-    .small {font-size: 0.95em; color:#665;}
-    .footer { text-align: center; color:#999; font-size:0.92em; margin-top:3em;}
+    label { display: block; margin-top: 1.2em; font-weight: bold;}
+    input, select { width: 100%; padding: .7em; border-radius: 8px; border: 1px solid #bcb7d6; margin-top: .35em;}
+    .btn { background: #533296; color: #fff; border:none; border-radius: 8px; padding: .8em; text-align:center; width:100%; font-size:1.08em; cursor:pointer; margin-top:1.5em; }
+    .btn:active { background: #301c62;}
+    .section {border-top: 1px dotted #dcccf5; margin-top:2em; padding-top:1.5em;}
+    .result {background: #f2edfa; margin-top: 2em; padding: 1em; border-radius:11px;}
+    .result strong { color: #533296;}
+    .gift, .music, .topic, .spot {border: 1px solid #e7dbfc; padding:.75em 1em; border-radius:7px; margin-top: 1em;}
+    .small { font-size: 0.95em; color:#665;}
+    .footer { text-align: center; color:#888; font-size:0.92em; margin-top:3em;}
+    .thankBtn { display: block; margin:auto; background:#ff6a01; color:#fff; font-weight:bold; border: none; border-radius: 24px; width:70%; font-size:1em; padding: .8em; margin-top:1em;}
+    .thankMsg { color:#ff6a01; font-size:1.15em; margin-top:0.7em;}
+    .listitem {margin-bottom: 0.7em;}
+    .copyBtn { background: #e0e9fc; color:#533296; border:none; border-radius: 6px; padding: .4em .9em; cursor:pointer;}
+    .copyBtn:active { background: #aad0fc;}
   </style>
 </head>
 <body>
 <header>
   <h1>お願いドライブ礼法</h1>
-  <div>透明なコスト分担で、気持ちよく運転依頼</div>
+  <div>運転する人が楽しくなる、乗る人の心遣いサポート！</div>
 </header>
 <div class="container">
-  <h2>乗車依頼フォーム</h2>
+  <h2>乗車依頼 &amp; 運転者サポート</h2>
   <form id="driveForm">
     <label>
       出発地
@@ -34,7 +40,7 @@
     </label>
     <label>
       目的地
-      <input type="text" id="end" placeholder="例：伊豆温泉" required>
+      <input type="text" id="end" placeholder="例：箱根温泉" required>
     </label>
     <label>
       乗車人数（運転者含む）
@@ -50,44 +56,89 @@
     </label>
     <label>
       高速区間（km）
-      <input type="number" id="highwayKm" min="0" value="50">
-      <span class="small">※ざっくり目安でOK</span>
+      <input type="number" id="highwayKm" min="0" value="60">
+      <span class="small">※目安でOK</span>
     </label>
     <label>
       駐車料金（円・合計）
-      <input type="number" id="parking" min="0" value="1000">
+      <input type="number" id="parking" min="0" value="800">
     </label>
     <label>
       想定運転時間（時間）
-      <input type="number" id="driveTime" min="0.5" step="0.5" value="2.5">
+      <input type="number" id="driveTime" min="0.5" step="0.5" value="2">
     </label>
-    <button type="submit" class="btn">分担を試算する</button>
+    <button type="submit" class="btn">分担・サポートを算出</button>
   </form>
 
-
   <div id="resultBlock" class="result" style="display:none;">
-    <h3>試算・メッセージ</h3>
+    <h3>分担・お願いメッセージ</h3>
     <div id="shareResult"></div>
-    <div id="messageResult" style="margin-top:1.5em;line-height:1.6;"></div>
-    <div style="margin-top:1.2em;">
-      <a id="paypayLink" target="_blank" class="btn" style="background:#20bb69;">PayPayで送金する</a>
+    <div id="messageResult" style="margin-top:1em;line-height:1.6;"></div>
+    <div style="margin-top:1em;">
+      <a id="paypayLink" target="_blank" class="btn" style="background:#23b96e;">PayPayで送金する</a>
     </div>
-    <div class="gift">
-      <strong>特別ギフト提案</strong><br>
-      運転への感謝をギフトで！<br>
-      <a href="https://giftee.com/" target="_blank">コーヒー（コンビニギフト）</a> /
+  </div>
+  
+  <div id="supportBlock" style="display:none;">
+    <!--運転者体験向上セクション-->
+    <div class="section music">
+      <strong>おすすめドライブ曲リスト</strong><br>
+      <div id="musicList"></div>
+    </div>
+    <div class="section topic">
+      <strong>今日の雑談・話題ネタ</strong><br>
+      <div id="topicList"></div>
+      <button class="copyBtn" onclick="copyTopic()">この話題をコピー</button>
+    </div>
+    <div class="section spot">
+      <strong>休憩候補・ご当地スポット</strong><br>
+      <div id="spotList"></div>
+    </div>
+    <div class="section gift">
+      <strong>特別ギフト案</strong><br>
+      運転ありがとうギフトもどうぞ！<br>
+      <a href="https://giftee.com/" target="_blank">コーヒーチケット</a> /
       <a href="https://yado.knt.co.jp/" target="_blank">日帰り温泉割引</a> /
       <a href="https://tabiiro.jp/gift/" target="_blank">ご当地グルメ</a>
+    </div>
+    <div style="margin-top:2em;">
+      <button class="thankBtn" onclick="showThank()">ありがとうを送信！</button>
+      <div id="thankMsgArea"></div>
     </div>
   </div>
 </div>
 <div class="footer">
-  一言価値: 迷惑かけたくない不安を、<br>透明なコスト分担と礼の見える化で解消。<br>
-  &copy; ドライブ礼法 MVP案
+  迷惑かけたくない不安を、透明な分担＋心遣いで解消。<br>
+  ドライブが最高の思い出になるように。<br>&copy;ドライブ礼法 MVP案
 </div>
 
 <script>
 function yen(x){ return '¥'+(Math.round(x)).toLocaleString(); }
+// 音楽リスト（サンプル/実装ではSpotify等API連携可）
+const musicSamples = [
+  "ドライブにぴったり：Official髭男dism『Pretender』",
+  "爽快J-pop：星野源『SUN』",
+  "みんなで楽しく：back number『高嶺の花子さん』",
+  "ちょっと懐メロ：DREAMS COME TRUE『未来予想図Ⅱ』",
+  "洋楽定番：Bruno Mars『Treasure』",
+  "気分転換：米津玄師『Lemon』"
+];
+const topicSamples = [
+  "最近ハマってること、お互い話そう！",
+  "最近見た映画やドラマでおすすめは？",
+  "今度行ってみたい旅・街は？",
+  "好きなコンビニスイーツ、なに？",
+  "もし1週間休みがあったら何したい？",
+  "高校時代の思い出話"
+];
+const spotSamples = [
+  "海老名SA：名物グルメ＆広い休憩所",
+  "箱根『富士屋ホテル カフェ』で休憩",
+  "小田原さかなセンターで食事休憩",
+  "足柄SAの絶景展望台",
+  "ご当地コンビニ『ローソン箱根』で限定スイーツ"
+];
+
 document.getElementById("driveForm").onsubmit = function(e){
   e.preventDefault();
   // 入力値取得
@@ -99,10 +150,10 @@ document.getElementById("driveForm").onsubmit = function(e){
   const parking = parseInt(document.getElementById("parking").value);
   const driveTime = parseFloat(document.getElementById("driveTime").value);
 
-  // デフォルト距離計算（仮:高速区間*1.2で全体距離と推定）
-  const totalKm = highwayKm*1.2;
+  // デフォルト距離計算（高速区間x1.25で全体距離と仮定）
+  const totalKm = highwayKm*1.25;
 
-  // 燃費↓
+  // 燃費
   let fuelEff = 15;
   if(carType==="sedan") fuelEff = 12;
   if(carType==="minivan") fuelEff = 9;
@@ -110,41 +161,59 @@ document.getElementById("driveForm").onsubmit = function(e){
   // 概算
   const fuelCost = totalKm/fuelEff*170; // ガソリン170円/L仮定
   const highwayCost = highwayKm*25;     // 高速1kmあたり25円目安
-  // 交通費合計
   const totalCost = fuelCost+highwayCost+parking;
-  const shareCost = totalCost/people; //人数割り
+  const shareCost = totalCost/people;
 
   // メッセージ生成
-  const driverName = "（友人名）"; // MVPなので未入力
   let msg =
-    `こんにちは${driverName}！\n`;
-  msg += `${start}→${end}にご一緒したく、運転お願いできますか？\n\n`;
-  msg += `交通コストは計算し、人数分でフェアに分担します。\n`;
-  msg += `\n【合計費用の見積】\n`
-    + `燃料: ${yen(fuelCost)}、高速: ${yen(highwayCost)}、駐車: ${yen(parking)}\n`
-    + `（人数${people}人、1人あたり: <strong>${yen(shareCost)}</strong>）\n\n`;
-  msg += `\n【休憩や立ち寄りについて】\n`
-    + `・運転者優先で目的地中、希望あれば遠慮なく！\n`
-    + `・運転時間${driveTime}時間なので休憩は最低1回入れたいです。\n\n`;
-  msg += `\n【お礼・ギフト】\n`
-    + `ご負担に感謝し、ドライバー向けのギフトも検討中です。`;
-  msg += `\n\nPayPayで即送金します！`;
+    `こんにちは（ドライバー名）さん！<br>`;
+  msg += `${start}→${end}へのドライブ、\nぜひ運転お願いしたくてフォーム作成しました。<br><br>`;
+  msg += `【交通費分担の見積り】<br>`
+    + `燃料: ${yen(fuelCost)} + 高速: ${yen(highwayCost)} + 駐車: ${yen(parking)}<br>`
+    + `（人数${people}人、1人あたり: <strong>${yen(shareCost)}</strong>）<br><br>`;
+  msg += `【お礼＆心遣い】<br>送金はPayPayですぐ。美味しいコーヒーや温泉ギフトもご用意！<br>`;
+  msg += `【旅程・休憩】<br>運転${driveTime}時間なので休憩は2回程度、立ち寄りスポット＆リクエスト優先します。<br>`;
+  msg += `【快適ドライブサポート】<br>選曲や話題、スポットも事前に用意しました。<br>`;
+  msg += `よろしくお願いします！😊`;
 
   // 送金リンク仮生成（実際はPayPay API）
   const money = Math.round(shareCost);
-  const payLink = `https://paypay.ne.jp/send/?amount=${money}&message=ドライブ礼法で交通費送金`;
+  const payLink = `https://paypay.ne.jp/send/?amount=${money}&message=ドライブ礼法交通費`;
 
-  // 表示
   document.getElementById("resultBlock").style.display = "";
   document.getElementById("shareResult").innerHTML =
-    `<strong>概算分担額</strong>（1人あたり）：<big style="font-size:1.3em;color:#1c8757;">${yen(shareCost)}</big> <br>
+    `<strong>概算分担額</strong>（1人あたり）：<big style="font-size:1.25em;color:#208864;">${yen(shareCost)}</big> <br>
     <span class="small">総費用=${yen(totalCost)}（燃料${yen(fuelCost)} + 高速${yen(highwayCost)} + 駐車${yen(parking)}）</span>
     `;
-
-  document.getElementById("messageResult").innerHTML =
-    msg.replace(/\n/g, "<br>");
+  document.getElementById("messageResult").innerHTML = msg;
   document.getElementById("paypayLink").href = payLink;
+  document.getElementById("supportBlock").style.display = "";
+  // サポート機能表示
+  let musicHtml = "";
+  for(let i=0;i<musicSamples.length;i++){
+    musicHtml += `<div class="listitem">${musicSamples[i]}</div>`;
+  }
+  document.getElementById("musicList").innerHTML = musicHtml;
+  const random = Math.floor(Math.random()*topicSamples.length);
+  document.getElementById("topicList").innerHTML = topicSamples[random];
+  let spotHtml = "";
+  for(let i=0;i<spotSamples.length;i++){
+    spotHtml += `<div class="listitem">${spotSamples[i]}</div>`;
+  }
+  document.getElementById("spotList").innerHTML = spotHtml;
+};
 
+// 話題コピー
+function copyTopic(){
+  const topic = document.getElementById("topicList").innerText;
+  navigator.clipboard.writeText(topic);
+  alert("話題ネタをコピーしました！");
+}
+// ありがとうボタン
+function showThank(){
+  document.getElementById("thankMsgArea").innerHTML =
+    `<div class="thankMsg">ドライブ運転、本当にありがとう！<br>みんなで快適な時間にしようね！😊</div>`;
+  setTimeout(()=>{document.getElementById("thankMsgArea").innerHTML='';},2500);
 }
 </script>
 </body>
